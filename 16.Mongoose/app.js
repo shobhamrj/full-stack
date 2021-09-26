@@ -22,11 +22,21 @@ const banana = new Fruit({
     rating: 6,
     review: "its so so !"
 });
-Fruit.insertMany([orange, banana], (err)=>{
-    if(err)
+// Fruit.insertMany([orange, banana], (err)=>{
+//     if(err)
+//         console.log(err);
+//     else
+//         console.log("Sucessfully added!");
+// });
+// fruit.save();
+Fruit.find((err, fruits)=>{
+    if(err) {
         console.log(err);
-    else
-        console.log("Sucessfully added!");
+    }
+    else {
+        fruits.forEach(fruit => {
+            console.log(fruit.name);    
+        });
+        
+    }
 });
-
-fruit.save();
