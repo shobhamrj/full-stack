@@ -35,11 +35,11 @@ const insertDocuments = (db, callback)=>{
 
         }
     ]
-    // , function(err, result) {
-    //     assert.equal(err, null);
-    //     assert.equal(3, result.result.n);
-    //     assert.equal(3, result.ops.length);
-    //     console.log("Inserted 3 document");
-    //     callback(result);
-    // });
+    , function(err, result) {
+        assert.equal(err, null);
+        assert.equal(3, result.result.n);
+        assert.equal(3, result.ops.length);
+        console.log("Inserted 3 document");
+        callback(result);
+    });
     )};
