@@ -12,16 +12,16 @@ const fruit = new Fruit({
     review: "Great!"
 });
 
-const orange = new Fruit({
-    name: "Orange",
-    rating: 4,
-    review: "Sour!"
-});
-const banana = new Fruit({
-    name: "banana",
-    rating: 6,
-    review: "its so so !"
-});
+// const orange = new Fruit({
+//     name: "Orange",
+//     rating: 4,
+//     review: "Sour!"
+// });
+// const banana = new Fruit({
+//     name: "banana",
+//     rating: 6,
+//     review: "its so so !"
+// });
 // Fruit.insertMany([orange, banana], (err)=>{
 //     if(err)
 //         console.log(err);
