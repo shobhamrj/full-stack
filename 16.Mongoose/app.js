@@ -3,7 +3,7 @@ mongoose.connect("mongodb://localhost:27017/fruitsDB", {useNewUrlParser: true});
 const fruitSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 
+        required: [true, "This is a required field !"]
 
     },
     rating: {
@@ -46,5 +46,19 @@ Fruit.find((err, fruits)=>{
         fruits.forEach(fruit => {
             console.log(fruit.name);    
         });
+    }
+});
+// Fruit.updateOne({_id: "6153638297da152f63d0a35f"},{name: "Peach"}, (err)=>{
+//     if(err){
+//         console.log(err);
+//     } else {
+//         console.log("Updated!");
+//     }
+// });
+Fruit.deleteOne({_id: "6150db1826ab282bec23345a"}, (err)=>{
+    if(err){
+        console.log(err);
+    } else {
+        console.log("Updated!");
     }
 });
