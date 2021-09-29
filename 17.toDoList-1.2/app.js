@@ -23,17 +23,21 @@ const item3 = new Item({
   name: "Code"
 });
 const defaultItems = [item1, item2, item3];
-Item.insertMany(defaultItems, (err)=>{
-  if(err){
-    console.log(err);
-  }else {
-    console.log("Sucessfully saved default items");
-  }
-});
 app.get("/", function(req, res) {
   Item.find({}, (err, foundItems)=>{
-    console.log(foundItems);
-    res.render("list", {listTitle: "Today", newListItems: foundItems});
+    if(foundItems.length === 0){
+      Item.insertMany(defaultItems, (err)=>{
+        if(err){
+          console.log(err);
+        }else {
+          console.log("Sucessfully saved default items");
+        }
+      });
+      res.redirect("/");
+    } 
+    else{
+      res.render("list", {listTitle: "Today", newListItems: foundItems});
+    }
   });
   
 });
