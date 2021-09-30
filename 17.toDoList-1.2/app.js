@@ -15,15 +15,21 @@ const itemsSchema = {
 };
 const Item = mongoose.model("Item", itemsSchema);
 const item1 = new Item({
-  name: "Eat"
+  name: "This is ToDo List!"
 });
 const item2 = new Item({
-  name: "Sleep"
+  name: "Hit the + button to add a new item"
 });
 const item3 = new Item({
-  name: "Code"
+  name: "<-- Hit this to delete an item"
 });
 const defaultItems = [item1, item2, item3];
+
+const listSchema = {
+  name: String,
+  items: [itemsSchema]
+}
+const List = mongoose.model("List", listSchema);
 
 app.get("/", function(req, res) {
   Item.find({}, (err, foundItems)=>{
@@ -41,6 +47,26 @@ app.get("/", function(req, res) {
       res.render("list", {listTitle: "Today", newListItems: foundItems});
     }
   });
+});
+
+app.get("/:customListName", (req, res)=>{
+  const customListName = req.params.customListName;
+  List.findOne({name: customListName}, (err, foundList)=>{
+    if(!err){
+      if(!foundList) {
+        const list = new List({
+          name: customListName,
+          list: defaultItems
+        });
+        list.save();
+        res.redirect("/" + customListName);
+      }
+      else {
+        res.render("list", {listTitle: foundList.name, newListItems: foundList.items} );
+      }
+    }
+  });
+
 });
 
 app.post("/", function(req, res){
