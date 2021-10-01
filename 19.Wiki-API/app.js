@@ -19,10 +19,10 @@ const articleSchema = {
     content: String
 };
 const Article = mongoose.model("Article", articleSchema);
-
+ 
 //TODO
 
-app.listen(3000, function() {
+app.listen(3000, ()=> {
   console.log("Server started on port 3000");
 });
 
