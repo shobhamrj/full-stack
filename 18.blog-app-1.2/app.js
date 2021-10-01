@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
-const kebabCase = require('lodash/kebabCase');
+const kebabCase = require('lodash');
 const mongoose = require('mongoose');
 
 mongoose.connect("mongodb://localhost:27017/blogDB", { useNewUrlParser:true, useUnifiedTopology: true });
@@ -26,10 +26,10 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
 app.use(express.static("public"));
 
 app.get("/", function(req, res) {
-
   Post.find(function(err, posts){
     if(err){
       console.log(err);
