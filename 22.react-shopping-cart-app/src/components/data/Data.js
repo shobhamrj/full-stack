@@ -42,11 +42,6 @@
     price: "1,789.11",
     image: "./images/image_6.jpg"
   },
- 
- 
- 
-
-]
- }
+]}
   
 export default data;
