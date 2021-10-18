@@ -1,19 +1,15 @@
 import React from "react";
 
 function ToDoItem(props) {
-    
-   
-
-    function handleOnClick() {
- 
-    }
-    return (
-        <div onClick={() =>{
-            props.onChecked(props.id);
-        }}>
-            <li> {props.text} </li>
-        </div> 
-    );
+  return (
+    <div
+      onClick={() => {
+        props.onChecked(props.id);
+      }}
+    >
+      <li>{props.text}</li>
+    </div>
+  );
 }
 
-export default ToDoItem;    
+export default ToDoItem;
